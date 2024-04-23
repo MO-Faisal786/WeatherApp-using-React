@@ -9,7 +9,7 @@ const Tempapp = () => {
     useEffect(()=>{
         const fetchApi = async () => {
 
-            const url = `https://api.openweathermap.org/data/2.5/weather?q=${search}&appid=fa3684081c887ecaf37a75d99585cdd3`;
+            const url = `https://api.openweathermap.org/data/2.5/weather?q=${search}&units=metric&appid=fa3684081c887ecaf37a75d99585cdd3`;
             const res = await fetch(url);
             const data = await res.json();
             
@@ -34,7 +34,8 @@ const Tempapp = () => {
                 <div className="inputData">
                     <input 
                     type="search" 
-                    className="inputFeild" 
+                    className="inputFeild"
+                    value={search} 
                     onChange={(event)=>{
                         setSearch(event.target.value)
                     }} 
@@ -52,8 +53,8 @@ const Tempapp = () => {
                             </h2>
                             {city.main ? (
                                 <>
-                                <h1 className="temp">{city.main.temp}</h1>
-                                <h3 className="tempmin_max">Min : {city.main.temp_min} || Max : {city.main.temp_max}</h3>
+                                <h1 className="temp">{city.main.temp}   &deg;Cel</h1>
+                                <h3 className="tempmin_max">Min : {city.main.temp_min}&deg;Cel || Max : {city.main.temp_max}&deg;Cel</h3>
                                 </>
                             ) : (
                                 <h2>No Temperature Data Available</h2>
